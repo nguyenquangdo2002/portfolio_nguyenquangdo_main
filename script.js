@@ -183,7 +183,7 @@ const tabsContent = document.querySelectorAll('.operations__content');
 tabs.forEach(t =>
   t.addEventListener('click', function (e) {
     // console.log('TAB');
-  })
+  }),
 );
 tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
@@ -313,7 +313,7 @@ const createDots = function () {
   slides.forEach(function (_, i) {
     dotContainer.insertAdjacentHTML(
       'beforeend',
-      `<button class="dots__dot" data-slide="${i}"></button>`
+      `<button class="dots__dot" data-slide="${i}"></button>`,
     );
   });
 };
@@ -329,7 +329,7 @@ const activeDot = function (slide) {
 activeDot(0);
 const goToSlide = function (slide) {
   slides.forEach(
-    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`),
   );
 };
 goToSlide(0);
@@ -366,4 +366,20 @@ dotContainer.addEventListener('click', function (e) {
     goToSlide(slide);
     activeDot(slide);
   }
+});
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.querySelector('.nav__links');
+
+hamburger.addEventListener('click', function () {
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+
+// Đóng menu khi click vào 1 link
+navLinks.querySelectorAll('.nav__link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+  });
 });

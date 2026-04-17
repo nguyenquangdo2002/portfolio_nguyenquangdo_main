@@ -48,7 +48,9 @@ body {
   padding: 15rem 3rem;
   border-top: 1px solid #ddd;
 
-  transition: transform 1s, opacity 1s;
+  transition:
+    transform 1s,
+    opacity 1s;
 }
 
 .section--hidden {
@@ -157,7 +159,7 @@ img {
 
 .nav__link:link,
 .nav__link:visited {
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: inherit;
   text-decoration: none;
@@ -699,4 +701,227 @@ h4 {
   background-color: #ccc;
   background-size: cover; /* Hiển thị ảnh đầy đủ trong phạm vi của liên kết */
   background-position: center; /* Căn giữa ảnh */
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1.5rem 0;
+    gap: 1rem;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  .nav__logo {
+    margin: 0 auto;
+    max-width: 10rem;
+  }
+
+  .nav__links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: min(100%, 42rem);
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1rem 0.75rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.08);
+  }
+
+  .nav__item {
+    margin: 0;
+    width: 100%;
+  }
+
+  .nav__link {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    padding: 1rem 1.25rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .nav__link--btn {
+    width: auto;
+    max-width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 2rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .header__title {
+    grid-template-columns: 1fr;
+    text-align: center;
+    row-gap: 2rem;
+  }
+
+  .header__img {
+    grid-row: 5;
+    transform: translateY(0);
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin: 0 2rem;
+  }
+
+  .operations__tab-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .operations__tab {
+    margin-right: 0;
+  }
+
+  .slider {
+    height: 40rem;
+  }
+
+  .section {
+    padding: 8rem 2rem;
+  }
+
+  .section__header {
+    font-size: 3rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  .modal {
+    padding: 3rem 2rem;
+    max-width: 90%;
+  }
+
+  .footer {
+    padding: 5rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 6rem 1rem;
+  }
+
+  .section__header {
+    font-size: 2.5rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .btn {
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+  }
+
+  .nav__logo {
+    height: 3.5rem;
+  }
+
+  .header__img {
+    width: 100%;
+  }
+}
+/* HAMBURGER MENU */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.8rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 200;
+}
+
+.nav__hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  color: transparent;
+}
+
+/* Animation khi mở menu */
+.nav__hamburger.open span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.nav__hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav__hamburger.open span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .nav__hamburger {
+    display: flex;
+  }
+  .header__title {
+    flex: 1;
+    margin-top: 50px;
+    max-width: 115rem;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    row-gap: 0rem;
+    align-content: center;
+    justify-content: center;
+    font-size: 7px !important  ;
+    align-items: start;
+    justify-items: start;
+  }
+  .nav {
+    flex-direction: row; /* logo trái, hamburger phải */
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    position: relative;
+  }
+
+  .nav__links {
+    display: none; /* ẩn mặc định */
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.97);
+    padding: 1.5rem 1rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+
+  .nav__links.open {
+    display: flex; /* hiện khi click hamburger */
+  }
+
+  .nav__item {
+    margin: 0;
+    width: 100%;
+  }
+
+  .nav__link {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    background-color: transparent;
+  }
 }
